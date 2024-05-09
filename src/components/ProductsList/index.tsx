@@ -1,6 +1,8 @@
 import { StyledProductsList } from './style';
 
 const ProductsList = () => {
+  
+
   return (
     <StyledProductsList>
       
