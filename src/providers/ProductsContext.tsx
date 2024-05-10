@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { api } from '../services/api';
 
 interface IProductsProviderProps {
   children: React.ReactNode;
 }
 
-interface IGetProducts {
+export interface IGetProducts {
   id: number,
   name: string,
   brand: string,
@@ -27,23 +27,20 @@ export const ProductsProvider = ({ children }: IProductsProviderProps) => {
 
   useEffect(() => {
     fetchProducts();
-  }, []); 
+  }, []);
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC');
-      setProductsList(response.data);
+      const response = await api.get('/products?page=1&rows=8&sortBy=id&orderBy=ASC');
+      setProductsList(response.data.products);
     } catch (error) {
       console.error('Erro ao buscar os produtos:', error);
     }
   };
 
   return (
-    <ProductsContext.Provider
-      value={{ productsList }}
-    >
+    <ProductsContext.Provider value={{ productsList }}>
       {children}
     </ProductsContext.Provider>
   );
 };
-
