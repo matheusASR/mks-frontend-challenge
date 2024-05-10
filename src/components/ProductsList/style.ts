@@ -5,4 +5,6 @@ export const StyledProductsList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  max-height: 90vh
 `;
