@@ -5,7 +5,7 @@ import CloseCartBtn from "../../assets/Close_cart.png";
 import ProductCardCart from "./ProductCardCart";
 
 const Cart = () => {
-  const { isCartOpen, closeCart, cartProducts } = useContext(CartContext);
+  const { isCartOpen, closeCart, cartProducts, total } = useContext(CartContext);
 
   return (
     <>
@@ -31,7 +31,7 @@ const Cart = () => {
           <section>
             <div>
                 <p>Total</p>
-                <p>R$ 700,00</p>
+                <p>R${total}</p>
             </div>
             <button>Finalizar Compra</button>
           </section>
