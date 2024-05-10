@@ -12,6 +12,7 @@ interface ICartContext {
   cartProducts: IGetProducts[]; 
   setCartProducts: React.Dispatch<React.SetStateAction<IGetProducts[]>>;
   addCart: (product: IGetProducts) => void; 
+  removeCart: (product: IGetProducts) => void; 
 }
 
 export const CartContext = createContext({} as ICartContext);
@@ -29,6 +30,12 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     }
   };
 
+  const removeCart = (product: IGetProducts) => {
+    setCartProducts((prevCartProducts) =>
+      prevCartProducts.filter((item) => item.id !== product.id)
+    );
+  };
+
   const openCart = () => {
     setIsCartOpen(true);
   };
@@ -43,7 +50,8 @@ export const CartProvider = ({ children }: ICartProviderProps) => {
     closeCart,
     cartProducts,
     setCartProducts,
-    addCart
+    addCart,
+    removeCart
   };
 
   return (

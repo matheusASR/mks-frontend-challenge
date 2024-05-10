@@ -6,5 +6,7 @@ export const StyledProductsList = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  max-height: 90vh
+  max-height: 90vh;
+  gap: 20px;
+  margin: 5vh 0px;
 `;

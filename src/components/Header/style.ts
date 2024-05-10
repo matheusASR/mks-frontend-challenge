@@ -7,10 +7,13 @@ export const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0px;
 
   .div__header {
     width: 90%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 
