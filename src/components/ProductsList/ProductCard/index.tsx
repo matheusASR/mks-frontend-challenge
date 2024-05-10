@@ -1,18 +1,12 @@
+import { useContext } from 'react';
 import { StyledProductCard } from "./style";
-import ShoppingBag from "../../../assets/shopping-bag.png"
+import ShoppingBag from "../../../assets/shopping-bag.png";
+import { CartContext } from "../../../providers/CartContext";
+import { IGetProducts } from '../../../providers/ProductsContext';
 
-interface IProduct {
-    id: number,
-    name: string,
-    brand: string,
-    description: string,
-    photo: string,
-    price: string,
-    createdAt: string,
-    updatedAt: string
-}
+const ProductCard = ({ product }: { product: IGetProducts }) => {
+    const { addCart } = useContext(CartContext);
 
-const ProductCard = ({ product }: { product: IProduct }) => {
     return (
         <StyledProductCard>
             <img className="product__image" src={product.photo} alt="product-image" />
@@ -23,7 +17,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
                 </div>
             </div>
             <p>{product.description}</p>
-            <button>
+            <button onClick={() => addCart(product)}>
                 <img src={ShoppingBag} alt="shopping-bag-image" />
                 <p>COMPRAR</p>
             </button>
